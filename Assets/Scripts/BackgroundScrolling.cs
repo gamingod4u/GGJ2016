@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 public class BackgroundScrolling : MonoBehaviour
 {
@@ -20,10 +17,9 @@ public class BackgroundScrolling : MonoBehaviour
     void Update()
     {
         speed = Input.GetAxis("Horizontal") * 5;
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < backgrounds.Length; i++)
         {
 			backgrounds[i].transform.localPosition -= new Vector3(speed * Time.deltaTime, 0);
-
 
 			if (speed < -.1 && backgrounds[i].transform.localPosition.x >22)
             {
