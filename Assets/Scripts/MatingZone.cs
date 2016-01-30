@@ -16,6 +16,7 @@ public class MatingZone : MonoBehaviour
 
     public float FlyAwayTime;
     public bool DestroyMe;
+    public Sprite FullHeart;
 
     // Use this for initialization
     void Start()
@@ -43,10 +44,12 @@ public class MatingZone : MonoBehaviour
                 case "heart4":
                     _heart4 = sprite;
                     if (Difficulty >= 4) spritesTemp[3] = _heart4;
+                    else { _heart4.gameObject.SetActive(false); }
                     break;
                 case "heart5":
                     _heart5 = sprite;
                     if (Difficulty >= 5) spritesTemp[4] = _heart5;
+                    else { _heart5.gameObject.SetActive(false); }
                     break;
             }
         }
@@ -54,7 +57,15 @@ public class MatingZone : MonoBehaviour
 
         foreach(var sprites in _sprites)
         {
-            sprites.gameObject.SetActive(false);
+            sprites.gameObject.SetActive(true);
+        }
+    }
+
+    void FlipHeart()
+    {
+        foreach(var _renderer in _sprites)
+        {
+            _renderer.sprite = FullHeart;
         }
     }
 
@@ -63,8 +74,6 @@ public class MatingZone : MonoBehaviour
     {
         if (FlyAwayTime < Time.time)
         {
-            Debug.Log("Current Time: " + Time.time);
-            Debug.Log("Fly Away Time: " + FlyAwayTime);
             FlyAwayTime = float.MaxValue;
             _animator.SetTrigger("FlyAway");
         }
