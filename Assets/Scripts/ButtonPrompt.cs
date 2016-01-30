@@ -79,12 +79,16 @@ public class ButtonPrompt : MonoBehaviour
 
     private void CheckButtonDown(string buttonName, GameObject button)
     {
-        if (Input.GetButtonDown(buttonName) && button.activeSelf)
+        if (Input.GetButtonDown(buttonName) && button.activeSelf && !Animating)
         {
+            Animating = true;
+            StopAllCoroutines();
             StartCoroutine(OnSuccess());
         }
-        else if (Input.GetButtonDown(buttonName) && !button.activeSelf)
+        else if (Input.GetButtonDown(buttonName) && !button.activeSelf && !Animating)
         {
+            Animating = true;
+            StopAllCoroutines();
             StartCoroutine(OnFailure());
         }
     }
@@ -92,35 +96,33 @@ public class ButtonPrompt : MonoBehaviour
     private IEnumerator OnSuccess()
     {
         _animator.SetTrigger("Success");
-        Animating = true;
         _startTime = default(double);
         DarkenActiveButton(TimeLimit);
         yield return new WaitForSeconds(1);
 
-        SendMessageUpwards(Msg.OnPromptSuccess, SendMessageOptions.DontRequireReceiver);
         while (Animating)
         {
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.2f);
         }
 
         SetRandomButtonActive();
+        SendMessageUpwards(Msg.OnPromptSuccess, SendMessageOptions.DontRequireReceiver);
     }
 
     private IEnumerator OnFailure()
     {
         _animator.SetTrigger("Failure");
-        Animating = true;
         _startTime = default(double);
         DarkenActiveButton(TimeLimit);
         yield return new WaitForSeconds(1);
 
-        SendMessageUpwards(Msg.OnPromptFailure, SendMessageOptions.DontRequireReceiver);
         while (Animating)
         {
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.2f);
         }
 
         SetRandomButtonActive();
+        SendMessageUpwards(Msg.OnPromptFailure, SendMessageOptions.DontRequireReceiver);
     }
 
     private void CheckTimer()
