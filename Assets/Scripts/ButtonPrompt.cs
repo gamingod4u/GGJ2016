@@ -3,17 +3,29 @@ using UnityEngine;
 
 public class ButtonPrompt : MonoBehaviour
 {
+    public class Msg
+    {
+        public const string OnPromptSuccess = "OnPromptSuccess";
+        public const string OnPromptFailure = "OnPromptFailure";
+    }
+
     private GameObject X;
     private GameObject A;
     private GameObject B;
     private GameObject Y;
 
     private GameObject[] _buttons;
+    private Animator _animator;
+    private double _startTime;
+
+    public bool Animating = false;
+    public double TimeLimit = 6d;
 
     // Use this for initialization
     void Start()
     {
         _buttons = new GameObject[4];
+        _animator = this.GetComponent<Animator>();
 
         foreach (var obj in this.transform)
         {
@@ -47,36 +59,126 @@ public class ButtonPrompt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Animating)
+        {
+            return;
+        }
+
         if (!AnyButtonsActive())
         {
-            var activeButtonIndex = Random.Range(0, 3);
-            _buttons[activeButtonIndex].SetActive(true);
+            SetRandomButtonActive();
         }
 
-        if (Input.GetButtonDown(Buttons.X) && X.activeSelf)
+        CheckButtonDown(Buttons.X, X);
+        CheckButtonDown(Buttons.A, A);
+        CheckButtonDown(Buttons.B, B);
+        CheckButtonDown(Buttons.Y, Y);
+
+        CheckTimer();
+    }
+
+    private void CheckButtonDown(string buttonName, GameObject button)
+    {
+        if (Input.GetButtonDown(buttonName) && button.activeSelf)
         {
-            X.SetActive(false);
+            StartCoroutine(OnSuccess());
+        }
+        else if (Input.GetButtonDown(buttonName) && !button.activeSelf)
+        {
+            StartCoroutine(OnFailure());
+        }
+    }
+
+    private IEnumerator OnSuccess()
+    {
+        _animator.SetTrigger("Success");
+        Animating = true;
+        _startTime = default(double);
+        DarkenActiveButton(TimeLimit);
+        yield return new WaitForSeconds(1);
+
+        SendMessageUpwards(Msg.OnPromptSuccess, SendMessageOptions.DontRequireReceiver);
+        while (Animating)
+        {
+            yield return new WaitForSeconds(.5f);
         }
 
-        if (Input.GetButtonDown(Buttons.A) && A.activeSelf)
+        SetRandomButtonActive();
+    }
+
+    private IEnumerator OnFailure()
+    {
+        _animator.SetTrigger("Failure");
+        Animating = true;
+        _startTime = default(double);
+        DarkenActiveButton(TimeLimit);
+        yield return new WaitForSeconds(1);
+
+        SendMessageUpwards(Msg.OnPromptFailure, SendMessageOptions.DontRequireReceiver);
+        while (Animating)
         {
-            A.SetActive(false);
+            yield return new WaitForSeconds(.5f);
         }
 
-        if (Input.GetButtonDown(Buttons.B) && B.activeSelf)
+        SetRandomButtonActive();
+    }
+
+    private void CheckTimer()
+    {
+        if (_startTime == default(double))
         {
-            B.SetActive(false);
+            _startTime = Time.fixedTime;
         }
 
-        if (Input.GetButtonDown(Buttons.Y) && Y.activeSelf)
+        var deltaTime = Time.fixedTime - _startTime;
+
+        if (deltaTime > TimeLimit)
         {
-            Y.SetActive(false);
+            StartCoroutine(OnFailure());
         }
+        else
+        {
+            var endTime = TimeLimit - deltaTime;
+            //DarkenActiveButton(endTime);
+        }
+    }
+
+    private void DarkenActiveButton(double endTime)
+    {
+        var activeButton = GetActiveButton();
+        float percentOfEnd = (float)(endTime / TimeLimit);
+        var currentColor = activeButton.GetComponent<SpriteRenderer>().color;
+        var newColor = new Color(currentColor.r, currentColor.g, currentColor.b, percentOfEnd);
+        activeButton.GetComponent<SpriteRenderer>().color = newColor;
+    }
+
+    private GameObject GetActiveButton()
+    {
+        foreach (var button in _buttons)
+        {
+            if (button.activeSelf)
+            {
+                return button;
+            }
+        }
+
+        throw new System.Exception("No active button to return");
+    }
+
+    private void SetRandomButtonActive()
+    {
+        foreach (var button in _buttons)
+        {
+            button.SetActive(false);
+        }
+
+        var activeButtonIndex = Random.Range(0, 4);
+        _buttons[activeButtonIndex].SetActive(true);
     }
 
     private bool AnyButtonsActive()
     {
-        foreach(var button in _buttons)
+        foreach (var button in _buttons)
         {
             if (button.activeSelf) return true;
         }
