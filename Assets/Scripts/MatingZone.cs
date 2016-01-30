@@ -12,10 +12,15 @@ public class MatingZone : MonoBehaviour
     private SpriteRenderer _heart5;
 
     private SpriteRenderer[] _sprites;
+    private Animator _animator;
+
+    public float FlyAwayTime;
+    public bool DestroyMe;
 
     // Use this for initialization
     void Start()
     {
+        _animator = GetComponent<Animator>();
         Difficulty = Random.Range(3, 6);
         _sprites = GetComponentsInChildren<SpriteRenderer>();
         var spritesTemp = new SpriteRenderer[Difficulty];
@@ -54,8 +59,17 @@ public class MatingZone : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (FlyAwayTime < Time.time)
+        {
+            FlyAwayTime = float.MaxValue;
+            _animator.SetTrigger("FlyAway");
+        }
 
+        if (DestroyMe)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 }

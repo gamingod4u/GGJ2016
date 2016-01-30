@@ -19,13 +19,12 @@ public class MateSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_nextSpawn == default(float))
+        if (_nextSpawn == default(float))
         {
-            var timeTillNextSpawn = SpawnInterval + Random.Range(0, SpawnIntervalRange);
-            _nextSpawn = Time.time + timeTillNextSpawn;
+            SetNextSpawn();
         }
 
-        if(_nextSpawn < Time.time)
+        if (_nextSpawn < Time.time)
         {
             SpawnMate();
         }
@@ -34,9 +33,19 @@ public class MateSpawner : MonoBehaviour
     void SpawnMate()
     {
         Debug.Log("Spawning Mate");
-        var mate = GameObject.Instantiate(MatePrefab, new Vector3(
-            transform.position.x, 
-            transform.position.y, 
+        var mate = (GameObject)GameObject.Instantiate(MatePrefab, new Vector3(
+            transform.position.x,
+            transform.position.y,
             transform.position.z), Quaternion.identity);
+
+        SetNextSpawn();
+
+        mate.GetComponentInChildren<MatingZone>().FlyAwayTime = _nextSpawn;
+    }
+
+    private void SetNextSpawn()
+    {
+        var timeTillNextSpawn = SpawnInterval + Random.Range(0, SpawnIntervalRange);
+        _nextSpawn = Time.time + timeTillNextSpawn;
     }
 }
