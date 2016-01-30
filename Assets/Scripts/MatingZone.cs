@@ -63,13 +63,15 @@ public class MatingZone : MonoBehaviour
     {
         if (FlyAwayTime < Time.time)
         {
+            Debug.Log("Current Time: " + Time.time);
+            Debug.Log("Fly Away Time: " + FlyAwayTime);
             FlyAwayTime = float.MaxValue;
             _animator.SetTrigger("FlyAway");
         }
 
         if (DestroyMe)
         {
-            GameObject.Destroy(gameObject);
+            GameObject.Destroy(gameObject.transform.parent.gameObject);
         }
     }
 }

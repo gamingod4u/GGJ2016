@@ -47,5 +47,7 @@ public class MateSpawner : MonoBehaviour
     {
         var timeTillNextSpawn = SpawnInterval + Random.Range(0, SpawnIntervalRange);
         _nextSpawn = Time.time + timeTillNextSpawn;
+        Debug.Log("Current Time: " + Time.time);
+        Debug.Log("Next Spawn Time: " + _nextSpawn);
     }
 }
