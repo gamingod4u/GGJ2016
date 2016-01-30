@@ -12,7 +12,7 @@ public class VitalityUpdater : MonoBehaviour
     void Start()
     {
         _text = GetComponent<Text>();
-        _playerGroup = GameObject.FindGameObjectWithTag("PlayerGroup");
+        _playerGroup = GameObject.FindGameObjectWithTag("Player");
         _mating = _playerGroup.GetComponent<Mating>();
     }
 
