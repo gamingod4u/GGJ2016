@@ -22,16 +22,16 @@ public class BackgroundScrolling : MonoBehaviour
         speed = Input.GetAxis("Horizontal") * 5;
         for (int i = 0; i < 2; i++)
         {
-            backgrounds[i].transform.position += new Vector3(speed * Time.deltaTime, 0);
+			backgrounds[i].transform.localPosition -= new Vector3(speed * Time.deltaTime, 0);
 
 
-            if (speed > .1 && backgrounds[i].transform.position.x > 20)
+			if (speed < -.1 && backgrounds[i].transform.localPosition.x >22)
             {
-                backgrounds[i].transform.position = new Vector3(backgrounds[i].transform.position.x - 40, 0);
+				backgrounds[i].transform.localPosition = new Vector3(backgrounds[i].transform.localPosition.x - 40, 0);
             }
-            else if (speed < -.1 && backgrounds[i].transform.position.x < -20)
+			else if (speed > .1 && backgrounds[i].transform.localPosition.x < -18)
             {
-                backgrounds[i].transform.position = new Vector3(backgrounds[i].transform.position.x + 40, 0);
+				backgrounds[i].transform.localPosition = new Vector3(backgrounds[i].transform.localPosition.x + 40, 0);
             }
         }
     }

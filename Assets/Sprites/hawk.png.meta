@@ -1,0 +1,261 @@
+fileFormatVersion: 2
+guid: 91aa0e57af6966241b71cc4c1ebe007e
+timeCreated: 1454168341
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: hawk_0
+    21300002: hawk_1
+    21300004: hawk_2
+    21300006: hawk_3
+    21300008: hawk_4
+    21300010: hawk_5
+    21300012: hawk_6
+    21300014: hawk_7
+    21300016: hawk_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: hawk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 106.66667
+        width: 66.666664
+        height: 53.333332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.5, y: 21.666672}
+        - {x: -10.5, y: 21.666672}
+        - {x: -21.5, y: 17.666672}
+        - {x: -21.5, y: -16.333328}
+        - {x: -10.5, y: -22.333328}
+        - {x: 9.5, y: -22.333328}
+        - {x: 18.5, y: -19.333328}
+        - {x: 33.5, y: -11.333328}
+        - {x: 33.5, y: -0.33332825}
+        - {x: 32.5, y: 2.6666718}
+    - name: hawk_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 106.66667
+        width: 66.666664
+        height: 53.333332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 29.5, y: -1.3333282}
+        - {x: -5.5, y: 20.666672}
+        - {x: -19.5, y: 20.666672}
+        - {x: -25.5, y: 12.666672}
+        - {x: -27.5, y: 6.6666718}
+        - {x: -27.5, y: -22.333328}
+        - {x: -22.5, y: -25.333328}
+        - {x: 6.5, y: -25.333328}
+        - {x: 12.5, y: -22.333328}
+        - {x: 29.5, y: -11.333328}
+        - {x: 30.5, y: -9.333328}
+        - {x: 30.5, y: -3.3333282}
+    - name: hawk_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 106.66667
+        width: 66.666664
+        height: 53.333332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3.5, y: 15.666672}
+        - {x: -26.5, y: 15.666672}
+        - {x: -33.5, y: 11.666672}
+        - {x: -33.5, y: -15.333328}
+        - {x: -30.5, y: -18.333328}
+        - {x: -14.5, y: -22.333328}
+        - {x: -4.5, y: -22.333328}
+        - {x: 18.5, y: -15.333328}
+        - {x: 22.5, y: -9.333328}
+        - {x: 22.5, y: -0.33332825}
+    - name: hawk_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 53.666668
+        width: 66.666664
+        height: 53.333332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.5, y: 5.666668}
+        - {x: -20.5, y: -3.333332}
+        - {x: -20.5, y: -17.333332}
+        - {x: -18.5, y: -19.333332}
+        - {x: 16.5, y: -19.333332}
+        - {x: 33.5, y: -10.333332}
+        - {x: 33.5, y: 4.666668}
+        - {x: 32.5, y: 5.666668}
+    - name: hawk_4
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 53.666668
+        width: 66.666664
+        height: 53.333332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11.5, y: 9.666668}
+        - {x: -29.5, y: -0.33333206}
+        - {x: -29.5, y: -15.333332}
+        - {x: -27.5, y: -18.333332}
+        - {x: 2.5, y: -18.333332}
+        - {x: 26.5, y: -12.333332}
+        - {x: 26.5, y: 8.666668}
+        - {x: 23.5, y: 9.666668}
+      - - {x: -33.5, y: -5.333332}
+        - {x: -30.5, y: -4.333332}
+        - {x: -30.5, y: -1.3333321}
+        - {x: -32.5, y: 0.66666794}
+        - {x: -33.5, y: 0.66666794}
+    - name: hawk_5
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 53.666668
+        width: 66.666664
+        height: 53.333332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.5, y: 9.666668}
+        - {x: -33.5, y: 1.6666679}
+        - {x: -33.5, y: -24.333332}
+        - {x: -31.5, y: -26.333332}
+        - {x: 20.5, y: -26.333332}
+        - {x: 20.5, y: 9.666668}
+    - name: hawk_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.66666794
+        width: 66.666664
+        height: 53.333332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32.5, y: 14.666668}
+        - {x: 8.5, y: 14.666668}
+        - {x: -21.5, y: 7.666668}
+        - {x: -21.5, y: -12.333332}
+        - {x: 0.5, y: -20.333332}
+        - {x: 22.5, y: -20.333332}
+        - {x: 33.5, y: -11.333332}
+        - {x: 33.5, y: 12.666668}
+    - name: hawk_7
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0.66666794
+        width: 66.666664
+        height: 53.333332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: 17.666668}
+        - {x: -22.5, y: 15.666668}
+        - {x: -28.5, y: 4.666668}
+        - {x: -28.5, y: -11.333332}
+        - {x: 13.5, y: -11.333332}
+        - {x: 26.5, y: 0.66666794}
+        - {x: 26.5, y: 14.666668}
+        - {x: 18.5, y: 17.666668}
+      - - {x: 29.5, y: 1.6666679}
+        - {x: 29.5, y: -0.33333206}
+        - {x: 31.5, y: -2.333332}
+        - {x: 33.5, y: -2.333332}
+        - {x: 33.5, y: 4.666668}
+        - {x: 32.5, y: 4.666668}
+    - name: hawk_8
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0.66666794
+        width: 66.666664
+        height: 53.333332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 14.666668}
+        - {x: -33.5, y: 11.666668}
+        - {x: -33.5, y: -11.333332}
+        - {x: -28.5, y: -13.333332}
+        - {x: -1.5, y: -13.333332}
+        - {x: 4.5, y: -10.333332}
+        - {x: 21.5, y: -2.333332}
+        - {x: 21.5, y: 3.666668}
+        - {x: 16.5, y: 14.666668}
+      - - {x: -12.5, y: 27.666668}
+        - {x: -12.5, y: 25.666668}
+        - {x: -10.5, y: 23.666668}
+        - {x: -6.5, y: 23.666668}
+        - {x: -1.5, y: 25.666668}
+        - {x: -1.5, y: 27.666668}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

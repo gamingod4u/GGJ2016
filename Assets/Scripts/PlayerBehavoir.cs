@@ -23,11 +23,11 @@ public class PlayerBehavoir : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") > .1f)
         {
-            gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
+            gameObject.transform.eulerAngles = new Vector3(0,0, 0);
         }
         else if (Input.GetAxis("Horizontal") < -.1f)
         {
-            gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+            gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
 
