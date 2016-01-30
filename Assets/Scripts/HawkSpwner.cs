@@ -14,7 +14,7 @@ public class HawkSpwner : MonoBehaviour
 
 	private GameObject player;
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{	
 		player = GameObject.FindGameObjectWithTag ("Player");
 
