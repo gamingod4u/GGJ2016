@@ -31,7 +31,7 @@ public class MatingZone : MonoBehaviour
             {
                 case "heart1":
                     _heart1 = sprite;
-                    spritesTemp[0] = _heart1; 
+                    spritesTemp[0] = _heart1;
                     break;
                 case "heart2":
                     _heart2 = sprite;
@@ -55,17 +55,19 @@ public class MatingZone : MonoBehaviour
         }
         _sprites = spritesTemp;
 
-        foreach(var sprites in _sprites)
+        foreach (var sprites in _sprites)
         {
             sprites.gameObject.SetActive(true);
         }
     }
 
-    void FlipHeart()
+    public void FlipHeart()
     {
-        foreach(var _renderer in _sprites)
+        foreach (var _renderer in _sprites)
         {
+            if (_renderer.sprite == FullHeart) continue;
             _renderer.sprite = FullHeart;
+            return;
         }
     }
 

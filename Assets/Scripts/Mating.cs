@@ -12,6 +12,7 @@ public class Mating : MonoBehaviour
     public GameObject ButtonPrompt;
     public int CurrentVitality = 100;
     public float InvulnerableTime = 2;
+    public MatingZone ActiveZone;
 
     // Use this for initialization
     void Start()
@@ -27,6 +28,7 @@ public class Mating : MonoBehaviour
             enemy.GetComponent<HawkBehavior>().PlayerHit += OnPlayerHit;
         }
     }
+
 
     private void OnPlayerHit()
     {
@@ -55,6 +57,7 @@ public class Mating : MonoBehaviour
         {
             if (collider.gameObject.tag == "MatingZone")
             {
+                ActiveZone = collider.gameObject.GetComponent<MatingZone>();
                 if (!ButtonPrompt.activeSelf)
                 {
                     ButtonPrompt.SetActive(true);
@@ -65,6 +68,7 @@ public class Mating : MonoBehaviour
 
         if (ButtonPrompt.activeSelf && !_promptBehavior.Animating)
         {
+            ActiveZone = null;
             ButtonPrompt.SetActive(false);
         }
     }
@@ -72,5 +76,14 @@ public class Mating : MonoBehaviour
     void Update()
     {
         CurrentVitality = _vitalityAdjustment + (_startingVitality - (int)Time.realtimeSinceStartup);
+    }
+
+
+    public void OnPromptSuccess()
+    {
+        if(ActiveZone != null)
+        {
+            ActiveZone.FlipHeart();
+        }
     }
 }
