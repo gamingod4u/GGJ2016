@@ -45,6 +45,7 @@ public class Mating : MonoBehaviour
         {
             yield return new WaitForSeconds(0.2f);
         }
+		SoundManager.instance.PlaySingle (2);
         _invulnerable = false;
     }
 

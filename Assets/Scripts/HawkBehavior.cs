@@ -63,10 +63,12 @@ public class HawkBehavior : MonoBehaviour
 
 	void OnCollisionEnter(Collision collider)
 	{
-		if (collider.transform.tag == "Player") 
+		if (collider.transform.tag == "Player") {
+			if (PlayerHit != null)
+				PlayerHit ();
+		} else if (collider.transform.tag == "MatingZone") 
 		{
-			if(PlayerHit != null)
-				PlayerHit();
+			Debug.Log ("we hit the mate");
 		}
 	}
 }
