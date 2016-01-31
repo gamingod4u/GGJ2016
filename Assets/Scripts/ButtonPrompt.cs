@@ -7,6 +7,7 @@ public class ButtonPrompt : MonoBehaviour
     {
         public const string OnPromptSuccess = "OnPromptSuccess";
         public const string OnPromptFailure = "OnPromptFailure";
+        public const string OnDance = "OnDance";
     }
 
     private GameObject X;
@@ -81,6 +82,7 @@ public class ButtonPrompt : MonoBehaviour
     {
         if (Input.GetButtonDown(buttonName) && button.activeSelf && !Animating)
         {
+            SendMessageUpwards(Msg.OnDance, SendMessageOptions.DontRequireReceiver);
             Animating = true;
             StopAllCoroutines();
             StartCoroutine(OnSuccess());

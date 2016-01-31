@@ -6,6 +6,7 @@ public class Mating : MonoBehaviour
     private ButtonPrompt _promptBehavior;
     private int _startingVitality;
     private HawkSpwner _hawkSpwner;
+    private Animator _animator;
     private int _vitalityAdjustment;
     private bool _invulnerable;
 
@@ -19,6 +20,7 @@ public class Mating : MonoBehaviour
     {
         _invulnerable = false;
         _vitalityAdjustment = 0;
+        _animator = GetComponent<Animator>();
         _promptBehavior = ButtonPrompt.GetComponent<ButtonPrompt>();
         _startingVitality = CurrentVitality;
         _hawkSpwner = FindObjectOfType<HawkSpwner>();
@@ -34,6 +36,8 @@ public class Mating : MonoBehaviour
     {
         if (_invulnerable) { return; }
         _vitalityAdjustment -= 10;
+        ButtonPrompt.SetActive(false);
+        _animator.SetTrigger("Hit");
         StartCoroutine(PlayerHit());
     }
 
@@ -52,6 +56,12 @@ public class Mating : MonoBehaviour
     void FixedUpdate()
     {
         var colliders = Physics2D.OverlapCircleAll(this.transform.position, 0.1f);
+
+        if (_invulnerable)
+        {
+            ButtonPrompt.SetActive(false);
+            return;
+        }
 
         foreach (var collider in colliders)
         {
@@ -85,5 +95,10 @@ public class Mating : MonoBehaviour
         {
             ActiveZone.FlipHeart();
         }
+    }
+
+    public void OnDance()
+    {
+        _animator.SetTrigger("Dance");
     }
 }
