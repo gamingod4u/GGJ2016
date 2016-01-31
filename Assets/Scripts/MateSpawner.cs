@@ -37,7 +37,7 @@ public class MateSpawner : MonoBehaviour
 
     void SpawnMate()
     {
-        var mateType = Random.Range(0, MatePrefabs.Length + 1);
+        var mateType = Random.Range(0, MatePrefabs.Length);
         var prefab = MatePrefabs[mateType];
 
         Debug.Log("Spawning Mate");
