@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,24 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start"))
         {
-            Application.Quit();
+            var sceneName = SceneManager.GetActiveScene().name;
+            if (sceneName == "MainMenu")
+            {
+                Application.Quit();
+            }
+            else
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+
+        if (Input.GetButtonDown(Buttons.A))
+        {
+            var sceneName = SceneManager.GetActiveScene().name;
+            if(sceneName == "MainMenu")
+            {
+                SceneManager.LoadScene("Playground");
+            }
         }
     }
 }
