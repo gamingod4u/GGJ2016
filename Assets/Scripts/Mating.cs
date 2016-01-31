@@ -102,7 +102,7 @@ public class Mating : MonoBehaviour
 		} else if (CurrentVitality < 0) 
 		{
 			CurrentVitality = 0;
-			// end the game here 
+			Application.LoadLevel (0);
 		}
 
     }
