@@ -35,7 +35,7 @@ public class MateSpawner : MonoBehaviour
         Debug.Log("Spawning Mate");
         var mate = (GameObject)GameObject.Instantiate(MatePrefab, new Vector3(
             transform.position.x,
-            transform.position.y,
+            transform.position.y + Random.Range(-2f, 2f),
             transform.position.z), Quaternion.identity);
 
         SetNextSpawn();
