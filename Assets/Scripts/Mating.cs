@@ -118,6 +118,13 @@ public class Mating : MonoBehaviour
 
     public void OnDance()
     {
-        _animator.SetTrigger("Dance");
+        if (Random.Range(0, 2) == 1)
+        {
+            _animator.SetTrigger("Dance");
+        }
+        else
+        {
+            _animator.SetTrigger("Moonwalk");
+        }
     }
 }
