@@ -24,11 +24,11 @@ public class BackgroundScrolling : MonoBehaviour
 
 			if (speed < -.1 && localPostion.x >22)
             {
-				backgrounds[i].transform.localPosition = new Vector3(localPostion.x - 40, localPostion.y);
+				backgrounds[i].transform.localPosition = new Vector3(localPostion.x - 46, localPostion.y);
             }
 			else if (speed > .1 && backgrounds[i].transform.localPosition.x < -18)
             {
-				backgrounds[i].transform.localPosition = new Vector3(localPostion.x + 40, localPostion.y);
+				backgrounds[i].transform.localPosition = new Vector3(localPostion.x + 46, localPostion.y);
             }
         }
     }
