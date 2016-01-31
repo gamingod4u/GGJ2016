@@ -103,7 +103,6 @@ public class ButtonPrompt : MonoBehaviour
         yield return new WaitForSeconds(1);
 
 		SoundManager.instance.PlaySingle (0);
-        SendMessageUpwards(Msg.OnPromptSuccess, SendMessageOptions.DontRequireReceiver);
 
         while (Animating)
         {
@@ -122,8 +121,6 @@ public class ButtonPrompt : MonoBehaviour
         yield return new WaitForSeconds(1);
 
 		SoundManager.instance.PlaySingle (1);
-        SendMessageUpwards(Msg.OnPromptFailure, SendMessageOptions.DontRequireReceiver);
-
         while (Animating)
         {
             yield return new WaitForSeconds(.2f);
