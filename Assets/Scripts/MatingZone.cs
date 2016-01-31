@@ -13,14 +13,20 @@ public class MatingZone : MonoBehaviour
 
     private SpriteRenderer[] _sprites;
     private Animator _animator;
-
+	private Camera main;
     public float FlyAwayTime;
     public bool DestroyMe;
     public Sprite FullHeart;
 
+
+	public delegate void OnGainVitality();
+	public static event OnGainVitality onGain;
+
+
     // Use this for initialization
     void Start()
     {
+		main = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
         _animator = GetComponent<Animator>();
         Difficulty = Random.Range(3, 6);
         _sprites = GetComponentsInChildren<SpriteRenderer>();
@@ -63,13 +69,60 @@ public class MatingZone : MonoBehaviour
 
     public void FlipHeart()
     {
-        foreach (var _renderer in _sprites)
-        {
+
+		for (int i = 0; i < _sprites.Length; i++) 
+		{
+			if (_sprites [i].sprite == FullHeart)
+			{
+				continue;
+			}
+			else 
+			{
+				_sprites [i].sprite = FullHeart;
+
+				if (i == _sprites.Length-1) 
+				{
+					FlyAwayTime = Time.time + 6.0f;
+					SoundManager.instance.PlaySingle (3);
+					StartCoroutine ("DoTheDance");
+
+				}
+				return;
+			}
+		}
+
+
+
+     /*   foreach (var _renderer in _sprites)
+		{
             if (_renderer.sprite == FullHeart) continue;
             _renderer.sprite = FullHeart;
             return;
-        }
+        }*/
     }
+
+	private IEnumerator DoTheDance()
+	{
+		if (onGain != null)
+			onGain ();
+
+		yield return new WaitForSeconds (3);
+		//play the sound effect
+		SoundManager.instance.PlaySingle(4);
+		// here we will start the animation for the dance
+
+		// wait for the animation to quit 
+		yield return new WaitForSeconds(1);
+		// turn off the screen 
+		main.cullingMask = 0;
+		// wait for the sound effect 
+		yield return new WaitForSeconds(2);
+		// turn back on the screen
+		main.cullingMask = 5;
+	}
+
+
+
 
     // Update is called once per frame
     void FixedUpdate()
