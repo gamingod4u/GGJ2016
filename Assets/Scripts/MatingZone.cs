@@ -79,6 +79,11 @@ public class MatingZone : MonoBehaviour
 			else 
 			{
 				_sprites [i].sprite = FullHeart;
+                
+                if(_animator.HasState(0, Animator.StringToHash("Love")))
+                {
+                    _animator.SetTrigger("Love");
+                }
 
 				if (i == _sprites.Length-1) 
 				{

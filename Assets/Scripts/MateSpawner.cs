@@ -5,7 +5,7 @@ public class MateSpawner : MonoBehaviour
     private BackgroundScrolling _background;
     private float _nextSpawn;
 
-    public GameObject MatePrefab;
+    public GameObject[] MatePrefabs;
     public float SpawnInterval = 8.0f;
     public float SpawnIntervalRange = 3.0f;
 
@@ -14,6 +14,11 @@ public class MateSpawner : MonoBehaviour
     {
         _background = GameObject.FindGameObjectWithTag("World")
             .GetComponent<BackgroundScrolling>();
+
+        if(MatePrefabs == null || MatePrefabs.Length == 0)
+        {
+            Debug.LogError("No prefabs set on Mate Spawner");
+        }
     }
 
     // Update is called once per frame
@@ -32,10 +37,13 @@ public class MateSpawner : MonoBehaviour
 
     void SpawnMate()
     {
+        var mateType = Random.Range(0, MatePrefabs.Length);
+        var prefab = MatePrefabs[mateType];
+
         Debug.Log("Spawning Mate");
-        var mate = (GameObject)GameObject.Instantiate(MatePrefab, new Vector3(
+        var mate = (GameObject)GameObject.Instantiate(prefab, new Vector3(
             transform.position.x,
-            transform.position.y + Random.Range(-2f, 2f),
+            transform.position.y + Random.Range(-2.5f, 2.5f),
             transform.position.z), Quaternion.identity);
 
         SetNextSpawn();
