@@ -23,12 +23,21 @@ public class Mating : MonoBehaviour
         _startingVitality = CurrentVitality;
         _hawkSpwner = FindObjectOfType<HawkSpwner>();
 
+		MatingZone.onGain += OnGain;
+
         foreach(var enemy in _hawkSpwner.enemies)
         {
             enemy.GetComponent<HawkBehavior>().PlayerHit += OnPlayerHit;
         }
     }
 
+	private void OnGain()
+	{
+
+		Debug.Log ("Getting health");
+
+		_vitalityAdjustment += 20;	
+	}
 
     private void OnPlayerHit()
     {
@@ -77,6 +86,15 @@ public class Mating : MonoBehaviour
     void Update()
     {
         CurrentVitality = _vitalityAdjustment + (_startingVitality - (int)Time.realtimeSinceStartup);
+
+		if (CurrentVitality > 100) {
+			CurrentVitality = 100;
+		} else if (CurrentVitality < 0) 
+		{
+			CurrentVitality = 0;
+			// end the game here 
+		}
+
     }
 
 
